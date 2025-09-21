@@ -7,7 +7,6 @@ return {
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
-      'onsails/lspkind-nvim',
     },
   },
   {
@@ -15,8 +14,6 @@ return {
     config = function()
       local cmp = require("cmp")
       require("luasnip.loaders.from_vscode").lazy_load()
-
-      local lspkind = require('lspkind')
 
       cmp.setup({
         snippet = {
@@ -38,18 +35,14 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" }, -- For luasnip users.
-        }, {
-          { name = "buffer" },
-        }),
-        formatting = {
-          format = function(vim_item)
-            -- Fancy icons and a fixed width for the kind
-            vim_item.kind = string.format("%s %s", lspkind.presets.default[vim_item.kind], vim_item.kind)
-            return vim_item
-          end,
+          { name = "nvim-jdtls" }, 
+          { name = "tailwindcss-language-server" },
         },
+          {
+          { name = "buffer" },
+          { name = "path" },
+        }),
       })
     end,
   },
 }
-

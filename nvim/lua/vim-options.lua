@@ -32,3 +32,11 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.wo.number = true
 
 vim.opt.mouse = 'a'
+
+vim.cmd("command! Glow !glow %")
+
+--compile C Programm
+
+vim.keymap.set('n', '<F5>', ':!clang % -o %< && ./%<<CR>', {noremap = true , silent = false})
+
+
